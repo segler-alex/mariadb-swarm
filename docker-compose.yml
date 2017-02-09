@@ -1,0 +1,16 @@
+version: '3'
+services:
+  dbserver:
+    build: ./
+    environment:
+      - MYSQL_ROOT_PASSWORD=12345678
+      - MYSQL_DATABASE=database_production
+      - MYSQL_USER=dbuser
+      - MYSQL_PASSWORD=12345678
+      - DNS=tasks.dbserver
+    image: "dbserver:latest"
+    networks:
+      - dbservernet
+networks:
+  dbservernet:
+    driver: overlay
