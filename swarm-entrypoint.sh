@@ -2,7 +2,7 @@
 echo "Startup.."
 
 CLUSTER_NAME="MyCluster"
-WSREP_SST_AUTH="root:123"
+WSREP_SST_AUTH="root:$MYSQL_ROOT_PASSWORD"
 
 if [ -z "$DNS" ]; then
     echo "DNS is not set!"
@@ -47,6 +47,8 @@ if [ $HOST_NUMBER -gt 0 ]; then
     echo "Found other hosts: $GCOMM"
 
     if [ $HOST_NUMBER -gt 1 ]; then
+        echo "Creating MySQL data dir.."
+        mkdir -p /var/lib/mysql/mysql
         echo "*** JOIN CLUSTER @ $GCOMM"
         docker-entrypoint.sh "$@" "--wsrep-cluster-name=$CLUSTER_NAME" "--wsrep-cluster-address=gcomm://$GCOMM" "--wsrep-sst-auth=${WSREP_SST_AUTH}"
     else

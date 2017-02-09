@@ -12,4 +12,4 @@ query_cache_size=0
 query_cache_type=0
 wsrep_on=ON
 wsrep_provider=/usr/lib/libgalera_smm.so
-wsrep_sst_method=mysqldump
+wsrep_sst_method=xtrabackup-v2
