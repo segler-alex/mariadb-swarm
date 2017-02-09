@@ -41,9 +41,9 @@ if [ $HOST_NUMBER -gt 0 ]; then
         fi
     done
 
-    echo "Line: $HOSTS_LINE"
+    echo "All hosts in network: $HOSTS_LINE"
+    echo "Number of hosts in network: $HOST_NUMBER"
     echo "Own Ips: $OWN_IPS"
-    echo "Found hosts: $HOST_NUMBER"
     echo "Found other hosts: $GCOMM"
 
     if [ $HOST_NUMBER -gt 1 ]; then
